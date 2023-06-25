@@ -39,14 +39,13 @@ public class UserController {
         String encodedPassword = bCryptPasswordEncoder.encode(dto.getPassword());
 
         user.setEmail(dto.getEmail());
-        user.setFirstName(dto.getFirstName());
-        user.setLastName(dto.getLastName());
-        user.setGender(dto.getGender());
-        user.setPhoneNumber(dto.getMobile());
+        user.setNames(dto.getNames());
+        user.setPhoneNumber(dto.getPhoneNumber());
         user.setPassword(encodedPassword);
+        user.setNationalId(dto.getNationalId());
 
         User entity = this.userService.create(user);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true, entity));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true,"Admin registered successfully", entity));
     }
 }

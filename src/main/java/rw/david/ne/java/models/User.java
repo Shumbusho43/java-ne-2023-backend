@@ -27,12 +27,9 @@ public class User {
     @Column(name = "id")
     private UUID id;
 
-    @Column(name = "first_name")
-    private String firstName;
 
-    @Column(name = "last_name")
-    private String lastName;
-
+    @Column(nullable = false, length = 20)
+    private String names;
     @Column(name = "phone_number")
     private String phoneNumber;
 
@@ -42,33 +39,8 @@ public class User {
     @Column(name = "national_id")
     private String nationalId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
-    private EGender gender;
-
     @JsonIgnore
     @NotBlank
     @Column(name = "password")
     private String password;
-
-    public User(String firstName, String lastName, String phoneNumber, String email, EGender gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.gender = gender;
-    }
-
-    public User(String firstName, String lastName, String phoneNumber, String email, EGender gender, String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.gender = gender;
-        this.password = password;
-    }
-
-    public String getFullName() {
-        return this.firstName + " " + this.lastName;
-    }
 }

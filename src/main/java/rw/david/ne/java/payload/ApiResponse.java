@@ -40,5 +40,8 @@ public class ApiResponse {
     public static ApiResponse fail(String message) {
         return new ApiResponse(false, message);
     }
+    public static ApiResponse success(String message,Object data) {
+        return new ApiResponse(true, message,data);
+    }
 }
 
