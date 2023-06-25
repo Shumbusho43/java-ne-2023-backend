@@ -8,7 +8,7 @@
         <version>2.7.0</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>rw.david.ne.java</groupId>
+    <groupId>com.ne.java</groupId>
     <artifactId>java2023</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>java2023</name>
