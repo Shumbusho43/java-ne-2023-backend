@@ -1,6 +1,7 @@
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\JwtTokenProvider.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\services\QuantityService.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\models\Purchase.java
+C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\services\ReportService.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\repositories\IUserRepository.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\models\User.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\exceptions\AppFailureException.java
@@ -11,6 +12,7 @@ C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\n
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\exceptions\BadRequestException.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\exceptions\AppException.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\PasswordConstraintValidator.java
+C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\ReportController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\repositories\QuantityRepository.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\CartController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\payload\ApiResponse.java

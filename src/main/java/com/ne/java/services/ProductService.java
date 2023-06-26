@@ -63,7 +63,6 @@ public class ProductService {
         productDto.setProductType(product.getProductType());
         productDto.setPrice(product.getPrice());
         productDto.setInDate(product.getInDate());
-        productDto.setImage(product.getImage());
 
         // Mapping quantities
         List<CreateQuantityDto> quantityDtos = new ArrayList<>();
