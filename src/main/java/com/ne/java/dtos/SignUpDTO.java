@@ -13,22 +13,22 @@ import javax.validation.constraints.Pattern;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SignUpDTO {
-
+//sign up dto
     @Email
     @NotBlank
     private String email;
 
     @NotBlank
-    private String names; // firstName + lastName combined into a single field
+    private String firstName;
 
     @NotBlank
     @Pattern(regexp = "[0-9]{10}", message = "Your phone is not a valid phone number")
-    private String phoneNumber; // Renamed to match the User model
-    @Pattern(regexp = "[0-9]{16}",message = "Your national ID is not a valid national ID")
-    @NotBlank
-    private String nationalId;
+    private String phoneNumber;
     @ValidPassword
     @NotBlank
     private String password;
+    //confirmPassword
+    @NotBlank
+    private String confirmPassword;
 
 }

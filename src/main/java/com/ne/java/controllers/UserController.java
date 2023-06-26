@@ -35,14 +35,16 @@ public class UserController {
     public ResponseEntity<ApiResponse> register(@Valid @RequestBody SignUpDTO dto) {
 
         User user = new User();
-
+        //check if password and confirmPassword match
+        if (!dto.getPassword().equals(dto.getConfirmPassword())) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ApiResponse(false, "Password and Confirm Password do not match"));
+        }
         String encodedPassword = bCryptPasswordEncoder.encode(dto.getPassword());
 
         user.setEmail(dto.getEmail());
-        user.setNames(dto.getNames());
+        user.setFirstName(dto.getFirstName());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setPassword(encodedPassword);
-        user.setNationalId(dto.getNationalId());
 
         User entity = this.userService.create(user);
 

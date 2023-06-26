@@ -19,11 +19,9 @@ public class UserPrincipal implements UserDetails {
 
     private String email;
 
-    private String names;
+    private String firstName;
 
     private String phoneNumber;
-
-    private String nationalId;
 
     @JsonIgnore
     private String password;
@@ -36,9 +34,8 @@ public class UserPrincipal implements UserDetails {
         return new UserPrincipal(
                 user.getId(),
                 user.getEmail(),
-                user.getNames(),
+                user.getFirstName(),
                 user.getPhoneNumber(),
-                user.getNationalId(),
                 user.getPassword(),
                 null);
     }

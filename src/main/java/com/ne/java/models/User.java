@@ -29,16 +29,12 @@ public class User {
 
 
     @Column(nullable = false, length = 20)
-    private String names;
+    private String firstName;
     @Column(name = "phone_number")
     private String phoneNumber;
 
     @Column(name = "email")
     private String email;
-
-    @Column(name = "national_id")
-    private String nationalId;
-
     @JsonIgnore
     @NotBlank
     @Column(name = "password")

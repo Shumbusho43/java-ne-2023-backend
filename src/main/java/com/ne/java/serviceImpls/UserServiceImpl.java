@@ -31,14 +31,14 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public boolean isNotUnique(User user) {
-        Optional<User> userOptional = this.userRepository.findByEmailOrPhoneNumberOrNationalId(user.getEmail(), user.getPhoneNumber(), user.getNationalId());
+        Optional<User> userOptional = this.userRepository.findByEmailOrPhoneNumber(user.getEmail(), user.getPhoneNumber());
         return userOptional.isPresent();
     }
 
     @Override
     public void validateNewRegistration(User user) {
         if (isNotUnique(user)) {
-            throw new BadRequestException(String.format("User with email '%s' or phone number '%s' or national id '%s' already exists", user.getEmail(), user.getPhoneNumber(), user.getNationalId()));
+            throw new BadRequestException(String.format("User with email '%s' or phone number '%s' already exists", user.getEmail(), user.getPhoneNumber()));
         }
     }
 
