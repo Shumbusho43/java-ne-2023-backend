@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -24,7 +25,8 @@ public class Purchase {
     private int quantity;
 
     private double total;
-
+//customer id
+    private UUID customerId;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 }

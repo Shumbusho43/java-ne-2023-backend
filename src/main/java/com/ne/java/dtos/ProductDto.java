@@ -15,7 +15,6 @@ public class ProductDto {
     private String productType;
     private double price;
     private Date inDate;
-    private String image;
     private List<CreateQuantityDto> quantities;
 }
 

@@ -6,6 +6,7 @@ import com.ne.java.models.Product;
 import com.ne.java.models.Purchase;
 import com.ne.java.repositories.ProductRepository;
 import com.ne.java.repositories.PurchaseRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,6 +15,13 @@ import java.util.*;
 public class CartService {
     private final Map<Long, CartItem> cartItems = new HashMap<>();
     private final PurchaseRepository purchaseRepository;
+    private IUserService userService;
+    @Autowired
+    public CartService(PurchaseRepository purchaseRepository, IUserService userService, ProductRepository productRepository) {
+        this.purchaseRepository = purchaseRepository;
+        this.userService = userService;
+        this.productRepository = productRepository;
+    }
 //product repository
     private final ProductRepository productRepository;
     public CartService(PurchaseRepository purchaseRepository, ProductRepository productRepository) {
@@ -54,6 +62,7 @@ public class CartService {
             purchased.setQuantity(cartItem.getQuantity());
             purchased.setTotal(cartItem.getTotalPrice());
             purchased.setProduct(product);
+            purchased.setCustomerId(userService.getLoggedInUser().getId());
             purchased.setDate(new Date());
 
             purchases.add(purchased);
