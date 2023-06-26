@@ -23,7 +23,6 @@ public class ProductService {
         entity.setCode(product.getCode());
         entity.setProductType(product.getProductType());
         entity.setPrice(product.getPrice());
-        //setting image later
         return productRepository.save(entity);
     }
 }

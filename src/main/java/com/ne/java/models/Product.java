@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -32,10 +33,8 @@ public class Product {
     @Column(name = "in_date", length = 50)
     @Temporal(TemporalType.TIMESTAMP)
     private Date inDate;
-
-    @Column(name = "image", length = 100)
-    private String image;
-
+    @OneToMany(mappedBy = "product")
+    private List<Quantity> quantities;
     @PrePersist
     public void prePersist() {
         if (inDate == null) {

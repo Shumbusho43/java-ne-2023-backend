@@ -20,6 +20,4 @@ public class CreateProductDto {
 
     @Positive(message = "Price must be positive")
     private double price;
-    // Optional image field, adjust the validation as needed
-    private String image;
 }
