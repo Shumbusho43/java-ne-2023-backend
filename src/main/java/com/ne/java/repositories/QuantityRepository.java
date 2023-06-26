@@ -4,4 +4,5 @@ import com.ne.java.models.Quantity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface QuantityRepository extends JpaRepository<Quantity, Long> {
+    Quantity findByProductId(Long productId);
 }

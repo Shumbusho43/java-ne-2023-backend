@@ -10,6 +10,7 @@ import java.util.Date;
 @Data
 public class CreateProductDto {
     @NotBlank(message = "Code is required")
+
     private String code;
 
     @NotBlank(message = "Name is required")

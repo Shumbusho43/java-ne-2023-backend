@@ -16,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(unique = true)
     private String code;
 
     private String name;
@@ -29,12 +29,16 @@ public class Product {
     @Temporal(TemporalType.DATE)
     @Column(name = "in_date")
     private Date inDate;
-
-    private String image;
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<Purchase> purchases;
     @JsonIgnore
     @OneToMany(mappedBy = "product")
     private List<Quantity> quantities;
+    @PrePersist
+    private void setDefaultInDate() {
+        if (inDate == null) {
+            inDate = new Date(); // Set the default value to the current date
+        }
+    }
 }

@@ -1,10 +1,12 @@
 package com.ne.java.services;
 
+import com.ne.java.dtos.PurchaseReportDto;
 import com.ne.java.models.Purchase;
 import com.ne.java.repositories.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,26 +17,29 @@ public class ReportService {
     @Autowired
     private PurchaseRepository purchaseRepository;
 
-    public List<Map<String, Object>> generatePurchaseReport() {
-        List<Map<String, Object>> report = new ArrayList<>();
+    public List<PurchaseReportDto> generatePurchaseReport() {
+        List<PurchaseReportDto> report = new ArrayList<>();
         List<Purchase> purchases = purchaseRepository.findAll();
-
+// Inside the report generation logic
         for (Purchase purchased : purchases) {
-            Map<String, Object> row = new HashMap<>();
-            row.put("id", purchased.getId());
-//            row.put("customerName", purchased.getCustomer().getFirstName());
-            row.put("date", purchased.getDate());
-            row.put("productId", purchased.getProduct().getId());
-            row.put("productName", purchased.getProduct().getName());
-            row.put("quantity", purchased.getQuantity());
-            row.put("totalPrice", purchased.getProduct().getPrice() * purchased.getQuantity());
-            row.put("unitPrice", purchased.getProduct().getPrice());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formattedDate = dateFormat.format(purchased.getDate());
+            PurchaseReportDto dto = new PurchaseReportDto();
+            dto.setId(purchased.getId());
+            dto.setCustomerName(purchased.getCustomerId().getFirstName());
+            dto.setDate(formattedDate);
+            dto.setProductId(purchased.getProduct().getId());
+            dto.setProductName(purchased.getProduct().getName());
+            dto.setQuantity(purchased.getQuantity());
+            dto.setUnitPrice(purchased.getProduct().getPrice());
+            dto.setTotalPrice(purchased.getProduct().getPrice() * purchased.getQuantity());
 
-            report.add(row);
+            report.add(dto);
         }
 
         return report;
     }
+
 
 }
 

@@ -1,11 +1,9 @@
 package com.ne.java.services;
 
-import com.ne.java.models.Cart;
-import com.ne.java.models.CartItem;
-import com.ne.java.models.Product;
-import com.ne.java.models.Purchase;
+import com.ne.java.models.*;
 import com.ne.java.repositories.ProductRepository;
 import com.ne.java.repositories.PurchaseRepository;
+import com.ne.java.repositories.QuantityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,15 +26,26 @@ public class CartService {
         this.purchaseRepository = purchaseRepository;
         this.productRepository = productRepository;
     }
-
+    @Autowired
+    private QuantityRepository quantityRepository;
     public void addItemToCart(Long productId, int quantity) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + productId));
+        // Retrieve the Quantity object for the specified productId
+        Quantity quantityObject = quantityRepository.findByProductId(productId);
+        if(quantityObject != null) {
+            int availableQuantity = quantityObject.getQuantity();
+            if (availableQuantity < quantity) {
+                throw new IllegalArgumentException("Not enough quantity available");
+            }
+        }
         // Check if the item is already in the cart
         if (cartItems.containsKey(productId)) {
             CartItem existingItem = cartItems.get(productId);
             existingItem.setQuantity(existingItem.getQuantity() + quantity);
-            existingItem.setTotalPrice(existingItem.getTotalPrice() + (existingItem.getQuantity() * getProductPrice(productId)));
+            existingItem.setTotalPrice(existingItem.getQuantity() * product.getPrice());
         } else {
-            CartItem newItem = new CartItem(productId, quantity, quantity * getProductPrice(productId));
+            CartItem newItem = new CartItem(productId, quantity, quantity * product.getPrice());
             cartItems.put(productId, newItem);
         }
     }
@@ -47,22 +56,38 @@ public class CartService {
         cart.setItems(cartItemList);
         return cart;
     }
-
-    private double getProductPrice(Long productId) {
-        // Fetch the product price from the database or other data source
-        // Implement your logic here
-        return 0.0; // Replace with the actual product price
-    }
     public void checkout() {
         List<Purchase> purchases = new ArrayList<>();
-        for (CartItem cartItem : cartItems.values()) {
-            Product product = productRepository.findById(cartItem.getProductId()).orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + cartItem.getProductId()));
 
+        for (CartItem cartItem : cartItems.values()) {
+            Product product = productRepository.findById(cartItem.getProductId())
+                    .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + cartItem.getProductId()));
+
+            // Update the product quantity
+            Quantity quantity = quantityRepository.findByProductId(cartItem.getProductId());
+            if (quantity != null) {
+                int availableQuantity = quantity.getQuantity();
+                int requestedQuantity = cartItem.getQuantity();
+
+                if (requestedQuantity <= availableQuantity) {
+                    // Reduce the available quantity by the requested quantity
+                    quantity.setQuantity(availableQuantity - requestedQuantity);
+
+                    // Save the updated quantity to the database
+                    quantityRepository.save(quantity);
+                } else {
+                    throw new IllegalArgumentException("Insufficient quantity for product with ID: " + cartItem.getProductId());
+                }
+            } else {
+                throw new IllegalArgumentException("Quantity not found for product with ID: " + cartItem.getProductId());
+            }
+
+            // Create the Purchase object
             Purchase purchased = new Purchase();
             purchased.setQuantity(cartItem.getQuantity());
             purchased.setTotal(cartItem.getTotalPrice());
             purchased.setProduct(product);
-            purchased.setCustomerId(userService.getLoggedInUser().getId());
+            purchased.setCustomerId(userService.getLoggedInUser());
             purchased.setDate(new Date());
 
             purchases.add(purchased);

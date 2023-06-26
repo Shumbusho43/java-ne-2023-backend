@@ -25,8 +25,9 @@ public class Purchase {
     private int quantity;
 
     private double total;
-//customer id
-    private UUID customerId;
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customer_id")
+    private User customerId;
 }
