@@ -23,7 +23,10 @@ public class QuantityService {
         // Retrieve the product by productId
         Product product = productRepository.findById(quantityDto.getProductId())
                 .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + quantityDto.getProductId()));
-
+        //check if the quantity is negative or zero
+        if (quantityDto.getQuantity() <= 0) {
+            throw new IllegalArgumentException("Quantity must be greater than zero");
+        }
         // Create the Quantity entity
         Quantity quantity = new Quantity();
         quantity.setProduct(product);

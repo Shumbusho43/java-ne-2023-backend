@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")
@@ -25,5 +27,17 @@ public class ProductController {
     public ResponseEntity<ApiResponse> registerProduct(@Valid  @RequestBody CreateProductDto product) {
         Product entity = productService.registerProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true, "Product registered successfully", entity));
+    }
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts() {
+        List<Product> products = productService.getAllProducts();
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping("/{productId}")
+    public ResponseEntity<Product> getProductById(@PathVariable Long productId) {
+        Optional<Product> product = productService.getProductById(productId);
+        return product.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 }
