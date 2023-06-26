@@ -1,6 +1,7 @@
 package com.ne.java.controllers;
 
 import com.ne.java.dtos.CreateProductDto;
+import com.ne.java.dtos.ProductDto;
 import com.ne.java.models.Product;
 import com.ne.java.payload.ApiResponse;
 import com.ne.java.services.ProductService;
@@ -28,16 +29,15 @@ public class ProductController {
         Product entity = productService.registerProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true, "Product registered successfully", entity));
     }
-    @GetMapping
+    @GetMapping("/all")
     public ResponseEntity<List<Product>> getAllProducts() {
-        List<Product> products = productService.getAllProducts();
-        return new ResponseEntity<>(products, HttpStatus.OK);
+        List<ProductDto> products = productService.getAllProducts();
+        return new ResponseEntity(products, HttpStatus.OK);
     }
 
     @GetMapping("/{productId}")
     public ResponseEntity<Product> getProductById(@PathVariable Long productId) {
-        Optional<Product> product = productService.getProductById(productId);
-        return product.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        ProductDto product = productService.getSingleProductById(productId);
+        return new ResponseEntity(product, HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\JwtTokenProvider.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\services\QuantityService.java
+C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\models\Purchase.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\repositories\IUserRepository.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\models\User.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\exceptions\AppFailureException.java
@@ -23,6 +24,7 @@ C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\n
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\QuantityController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\UserController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\config\WebConfig.java
+C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\ProductDto.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\JwtAuthenticationEntryPoint.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\CreateProductDto.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\ValidPassword.java

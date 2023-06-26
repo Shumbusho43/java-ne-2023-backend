@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Date;
 
 @Data
 public class CreateQuantityDto {
@@ -16,4 +17,6 @@ public class CreateQuantityDto {
 
     @NotEmpty(message = "Operation is required")
     private String operation;
+    //date
+    private Date date;
 }
