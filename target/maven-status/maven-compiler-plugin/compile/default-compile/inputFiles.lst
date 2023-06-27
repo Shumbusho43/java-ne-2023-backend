@@ -19,7 +19,6 @@ C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\n
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\models\Product.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\CreateQuantityDto.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\services\ProductService.java
-C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\Welcome.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\UserPrincipal.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\ProductController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\config\SwaggerApiDoc.java
@@ -28,6 +27,7 @@ C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\n
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\controllers\UserController.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\config\WebConfig.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\ProductDto.java
+C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\PurchaseReportDto.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\security\JwtAuthenticationEntryPoint.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\services\CartService.java
 C:\Users\david\OneDrive\Desktop\Proj\NE\java-ne-2023-backend\src\main\java\com\ne\java\dtos\CreateProductDto.java
