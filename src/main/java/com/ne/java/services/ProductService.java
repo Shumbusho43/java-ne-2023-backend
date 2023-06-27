@@ -71,7 +71,6 @@ public class ProductService {
 //            quantityDto.setId(quantity.getId());
             quantityDto.setQuantity(quantity.getQuantity());
             quantityDto.setOperation(quantity.getOperation());
-            quantityDto.setDate(quantity.getDate());
             quantityDtos.add(quantityDto);
         }
         productDto.setQuantities(quantityDtos);

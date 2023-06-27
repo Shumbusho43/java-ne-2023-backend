@@ -23,11 +23,18 @@ public class QuantityService {
         // Retrieve the product by productId
         Product product = productRepository.findById(quantityDto.getProductId())
                 .orElseThrow(() -> new IllegalArgumentException("Product not found with ID: " + quantityDto.getProductId()));
-        //check if the quantity is negative or zero
-        if (quantityDto.getQuantity() <= 0) {
-            throw new IllegalArgumentException("Quantity must be greater than zero");
+
+        // Check if the product already has a quantity entry in the Quantity table
+        Quantity existingQuantity = quantityRepository.findByProduct(product);
+
+        // If an existing quantity is found, update it with the incoming quantity
+        if (existingQuantity != null) {
+            int newQuantity = existingQuantity.getQuantity() + quantityDto.getQuantity();
+            existingQuantity.setQuantity(newQuantity);
+            return quantityRepository.save(existingQuantity);
         }
-        // Create the Quantity entity
+
+        // If no existing quantity is found, create a new entry
         Quantity quantity = new Quantity();
         quantity.setProduct(product);
         quantity.setQuantity(quantityDto.getQuantity());

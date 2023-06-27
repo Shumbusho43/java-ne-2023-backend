@@ -17,6 +17,4 @@ public class CreateQuantityDto {
 
     @NotEmpty(message = "Operation is required")
     private String operation;
-    //date
-    private Date date;
 }
