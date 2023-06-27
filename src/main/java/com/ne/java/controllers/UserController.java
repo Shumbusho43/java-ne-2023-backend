@@ -48,6 +48,6 @@ public class UserController {
 
         User entity = this.userService.create(user);
 
-        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true,"Admin registered successfully", entity));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new ApiResponse(true,"User registered successfully", entity));
     }
 }
