@@ -80,11 +80,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                         "/**/*.js",
                         "/api/v1/users/register",
                         "/api/v1/auth/**",
-                        "/v2/api-docs",
                         "/configuration/ui",
-                        "/swagger-resources/**",
                         "/configuration/security",
-                        "/swagger-ui.html",
                         "/webjars/**",
                         "/api/v1/products",
                         "/api/v1/quantities/**"
