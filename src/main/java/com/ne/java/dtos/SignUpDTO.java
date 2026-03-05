@@ -3,7 +3,6 @@ package com.ne.java.dtos;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import com.ne.java.security.ValidPassword;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -24,7 +23,6 @@ public class SignUpDTO {
     @NotBlank
     @Pattern(regexp = "[0-9]{10}", message = "Your phone is not a valid phone number")
     private String phoneNumber;
-    @ValidPassword
     @NotBlank
     private String password;
     //confirmPassword
